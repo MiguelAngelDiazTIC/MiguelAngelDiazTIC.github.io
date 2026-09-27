@@ -1,10 +1,43 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>miguelangeldiaztic-github-io</title>
+    <title>Miguel Ángel Díaz · Desarrollador Front-End</title>
+    <meta
+      name="description"
+      content="Portfolio de Miguel Ángel Díaz, desarrollador front-end en Madrid. Proyectos con React y TypeScript, experiencia en Accenture · BBVA."
+    />
+    <meta name="author" content="Miguel Ángel Díaz Gutiérrez" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://miguelangeldiaztic.github.io/" />
+    <meta name="theme-color" content="#5b3fd9" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://miguelangeldiaztic.github.io/" />
+    <meta property="og:title" content="Miguel Ángel Díaz · Desarrollador Front-End" />
+    <meta
+      property="og:description"
+      content="Proyectos con React y TypeScript, experiencia en Accenture · BBVA."
+    />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Aplica el tema antes de pintar para evitar el parpadeo claro/oscuro -->
+    <script>
+      try {
+        var t = localStorage.getItem('theme')
+        if (t !== 'light' && t !== 'dark')
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

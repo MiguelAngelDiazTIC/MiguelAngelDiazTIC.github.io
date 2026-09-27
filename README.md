@@ -1,75 +1,40 @@
-# React + TypeScript + Vite
+# Portfolio · Miguel Ángel Díaz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio personal publicado en **https://miguelangeldiaztic.github.io**.
 
-Currently, two official plugins are available:
+React 19 + TypeScript + Vite, CSS propio (sin librerías de UI), tema claro/oscuro y versión en español e inglés.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Desarrollo
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev      # servidor local
+npm run build    # comprobación de tipos + build en dist/
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Despliegue
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Cada push a `master` lanza `.github/workflows/deploy.yml`, que compila y publica en GitHub Pages.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Solo hay que configurarlo una vez: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-```
+## Añadir un proyecto
+
+1. Abre `src/data/projects.ts` y copia uno de los objetos.
+2. Cambia `slug`, `title`, `description` (`es` y `en`), `tags`, `repo`, `demo` y `date` (`"AAAA-MM"`; se ordenan del más nuevo al más antiguo).
+3. Guarda una captura en `public/projects/<slug>.webp` (unos 1280×800) y pon `image: '/projects/<slug>.webp'`. Si no hay captura, la tarjeta muestra el título.
+4. `featured: true` hace que la tarjeta ocupe dos columnas.
+5. Haz commit y push: la web se actualiza sola.
+
+## Otros datos
+
+| Qué | Dónde |
+|---|---|
+| Nombre, bio, redes, foto | `src/data/profile.ts` (foto en `public/`, p. ej. `photo: '/me.webp'`) |
+| Experiencia | `src/data/experience.ts` |
+| Formación | `src/data/education.ts` |
+| Competencias | `src/data/skills.ts` |
+| Textos de la interfaz | `src/i18n/strings.ts` |
+| CV en PDF | `public/cv/CV_Miguel_Angel_Diaz.pdf` |
+| Colores y estilos | `src/index.css` (variables al principio) |

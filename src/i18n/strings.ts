@@ -1,0 +1,39 @@
+import type { Localized } from '../types'
+
+export const strings = {
+  navHome: { es: 'Inicio', en: 'Home' },
+  navAbout: { es: 'Sobre mí', en: 'About' },
+  navProjects: { es: 'Proyectos', en: 'Projects' },
+  navExperience: { es: 'Experiencia', en: 'Experience' },
+  navContact: { es: 'Contacto', en: 'Contact' },
+  hello: { es: 'Soy', en: "I'm" },
+  contactMe: { es: 'Contacto', en: 'Contact me' },
+  downloadCv: { es: 'Descargar CV', en: 'Download CV' },
+  openToWork: { es: 'Disponible para trabajar', en: 'Open to work' },
+  basedIn: { es: 'Vivo en', en: 'Based in' },
+  now: { es: 'Ahora mismo', en: 'Right now' },
+  languages: { es: 'Idiomas', en: 'Languages' },
+  stack: { es: 'Stack principal', en: 'Main stack' },
+  seeGithub: { es: 'Mira mi código en GitHub', en: 'See my code on GitHub' },
+  projectsEyebrow: { es: 'Mi trabajo', en: 'My work' },
+  projectsTitle: { es: 'Proyectos publicados', en: 'Shipped projects' },
+  viewDemo: { es: 'Ver demo', en: 'Live demo' },
+  viewCode: { es: 'Código', en: 'Code' },
+  experienceEyebrow: { es: 'Trayectoria', en: 'Background' },
+  experienceTitle: { es: 'Experiencia y formación', en: 'Experience & education' },
+  education: { es: 'Formación', en: 'Education' },
+  skillsEyebrow: { es: 'Competencias', en: 'Skills' },
+  skillsTitle: { es: 'Con qué trabajo', en: 'What I work with' },
+  contactEyebrow: { es: 'Hablemos', en: "Let's talk" },
+  contactTitle: { es: '¿Tienes un proyecto o una vacante?', en: 'Got a project or an opening?' },
+  contactText: {
+    es: 'Escríbeme y te respondo lo antes posible.',
+    en: "Drop me a line and I'll get back to you soon.",
+  },
+  toggleTheme: { es: 'Cambiar tema claro/oscuro', en: 'Toggle light/dark theme' },
+  switchLang: { es: 'Switch to English', en: 'Cambiar a español' },
+  menu: { es: 'Menú', en: 'Menu' },
+  builtWith: { es: 'Hecho con React y TypeScript', en: 'Built with React and TypeScript' },
+} satisfies Record<string, Localized>
+
+export type StringKey = keyof typeof strings

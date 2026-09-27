@@ -1,0 +1,16 @@
+// localStorage puede lanzar en modo privado o con cookies bloqueadas.
+export function readStored(key: string): string | null {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+export function writeStored(key: string, value: string) {
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    /* sin persistencia */
+  }
+}
