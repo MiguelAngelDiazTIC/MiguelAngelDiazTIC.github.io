@@ -19,6 +19,25 @@ export type Project = {
   date: string
 }
 
+export type TechTest = {
+  slug: string
+  title: Localized
+  /** p. ej. "Live coding", "Prueba para casa" */
+  format: Localized
+  level: Localized
+  /** Qué pedía la prueba */
+  brief: Localized
+  /** Cómo la resolviste, en puntos cortos */
+  solution: Localized<string[]>
+  tags: string[]
+  repo?: string
+  demo?: string
+  /** Resuelta sin ayuda de IA */
+  noAI?: boolean
+  /** "AAAA-MM", se ordena de más nuevo a más antiguo */
+  date: string
+}
+
 export type Experience = {
   role: Localized
   company: string

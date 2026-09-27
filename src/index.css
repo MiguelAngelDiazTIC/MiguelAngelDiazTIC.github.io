@@ -76,7 +76,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -757,6 +758,92 @@ button {
 .project-body .text-link {
   margin-top: auto;
   padding-top: 4px;
+}
+
+/* ---------- Tech tests ---------- */
+.section-intro {
+  max-width: 60ch;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+.tests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+  gap: 16px;
+}
+
+.test-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.test-card h3 {
+  font-size: 1.5rem;
+}
+
+.test-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.pill-accent {
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.pill-ok {
+  border-color: color-mix(in srgb, var(--ok) 40%, transparent);
+  color: var(--ok);
+}
+
+.test-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-block: 20px;
+  border-block: 1px solid var(--border);
+}
+
+.test-cols p {
+  color: var(--muted);
+}
+
+.test-cols .exp-bullets {
+  margin-top: 0;
+}
+
+.test-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+}
+
+.test-links {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .test-cols {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 /* ---------- Experience ---------- */

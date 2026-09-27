@@ -6,9 +6,10 @@ import { Close, Menu, Moon, Sun } from './Icons'
 const left: [string, StringKey][] = [
   ['#inicio', 'navHome'],
   ['#sobre-mi', 'navAbout'],
+  ['#proyectos', 'navProjects'],
 ]
 const right: [string, StringKey][] = [
-  ['#proyectos', 'navProjects'],
+  ['#pruebas', 'navTests'],
   ['#experiencia', 'navExperience'],
   ['#contacto', 'navContact'],
 ]
