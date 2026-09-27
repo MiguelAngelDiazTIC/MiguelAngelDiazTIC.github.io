@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { skills } from '../data/skills'
 import { useLang } from '../i18n/useLang'
 
@@ -14,8 +15,8 @@ export function Skills() {
           <article key={g.name.en} className="card">
             <h3 className="card-label">{l(g.name)}</h3>
             <ul className="chips">
-              {g.items.map((s) => (
-                <li key={s} className="chip">
+              {g.items.map((s, i) => (
+                <li key={s} className="chip" style={{ '--i': i } as CSSProperties}>
                   {s}
                 </li>
               ))}

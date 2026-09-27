@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { readStored, writeStored } from './storage'
+import { setRevealOrigin, withViewTransition } from './viewTransition'
 
 type Theme = 'light' | 'dark'
 
@@ -16,9 +17,15 @@ export function useTheme() {
     document.documentElement.dataset.theme = theme
   }, [theme])
 
-  const toggle = () => {
+  /** `origin`: punto desde el que se expande el nuevo tema (el botón pulsado) */
+  const toggle = (origin?: { x: number; y: number }) => {
     const next = theme === 'dark' ? 'light' : 'dark'
-    setTheme(next)
+    if (origin) setRevealOrigin(origin.x, origin.y)
+    withViewTransition(() => {
+      // El DOM tiene que cambiar dentro de la transición, sin esperar al efecto
+      document.documentElement.dataset.theme = next
+      setTheme(next)
+    }, 'theme')
     writeStored('theme', next)
   }
 

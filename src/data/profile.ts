@@ -3,15 +3,10 @@ import type { Localized } from '../types'
 export const profile = {
   name: 'Miguel Ángel',
   fullName: 'Miguel Ángel Díaz Gutiérrez',
-  role: { es: 'Desarrollador Front-End', en: 'Front-End Developer' } as Localized,
+  role: { es: 'Desarrollador front-end', en: 'Front-end developer' } as Localized,
   bio: {
     es: 'Construyo interfaces responsive y accesibles con JavaScript y TypeScript. He trabajado en Accenture desarrollando componentes para aplicaciones de BBVA, y antes di soporte IT en equipos de eSports de alto rendimiento.',
     en: 'I build responsive, accessible interfaces with JavaScript and TypeScript. I worked at Accenture building components for BBVA applications, and before that I did IT support for high-performance eSports teams.',
-  } as Localized,
-  /** Texto de la tarjeta "Ahora mismo" */
-  now: {
-    es: 'Buscando mi primer puesto como desarrollador front-end junior.',
-    en: 'Looking for my first junior front-end developer role.',
   } as Localized,
   location: 'Madrid',
   /** Tarjeta de eSports del bento: de dónde vengo */
@@ -34,5 +29,4 @@ export const profile = {
     { name: { es: 'Inglés', en: 'English' }, level: { es: 'C1', en: 'C1' } },
     { name: { es: 'Francés', en: 'French' }, level: { es: 'B1', en: 'B1' } },
   ] as { name: Localized; level: Localized }[],
-  featuredStack: ['TypeScript', 'JavaScript', 'React', 'LitElement', 'HTML5', 'CSS3', 'Git'],
 }

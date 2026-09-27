@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BentoGrid } from './components/BentoGrid'
 import { Contact, Footer } from './components/Contact'
 import { Experience } from './components/Experience'
@@ -8,10 +9,13 @@ import { Skills } from './components/Skills'
 import { TechTests } from './components/TechTests'
 import { useTheme } from './useTheme'
 import { useLang } from './i18n/useLang'
+import { startMotion } from './motion'
 
 function App() {
   const { theme, toggle } = useTheme()
   const { t } = useLang()
+
+  useEffect(() => startMotion(), [])
 
   return (
     <>

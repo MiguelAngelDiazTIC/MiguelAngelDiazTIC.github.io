@@ -43,6 +43,8 @@ export type Experience = {
   company: string
   place: Localized
   period: Localized
+  /** Varias etapas en la misma empresa */
+  stints?: { period: Localized; place: Localized }[]
   bullets: Localized<string[]>
   kind: 'dev' | 'it'
 }

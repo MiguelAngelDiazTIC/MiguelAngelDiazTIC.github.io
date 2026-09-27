@@ -13,7 +13,6 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Recharts', 'Motion'],
     demo: 'https://gym-app-eta-murex.vercel.app',
     repo: 'https://github.com/MiguelAngelDiazTIC/Gym-App',
-    featured: true,
     date: '2026-09',
   },
   {
@@ -27,6 +26,7 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Vite', 'eSports'],
     demo: 'https://mercado-fichajes-vlr.vercel.app',
     repo: 'https://github.com/MiguelAngelDiazTIC/Mercado-Fichajes-VLR',
+    featured: true,
     date: '2026-06',
   },
 ]

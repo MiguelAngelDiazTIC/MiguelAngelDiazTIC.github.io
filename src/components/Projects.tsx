@@ -5,7 +5,10 @@ import type { Project } from '../types'
 import { ArrowButton } from './ArrowButton'
 import { ArrowUpRight, GitHub } from './Icons'
 
-const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date))
+// Destacados primero; después, del más nuevo al más antiguo
+const sorted = [...projects].sort(
+  (a, b) => Number(!!b.featured) - Number(!!a.featured) || b.date.localeCompare(a.date),
+)
 
 export function Projects() {
   const { t } = useLang()
@@ -80,7 +83,7 @@ function ProjectCard({ project: p }: { project: Project }) {
       </div>
       {p.demo && (
         <div className="project-notch">
-          <ArrowButton href={p.demo} label={`${t('viewDemo')}: ${p.title}`} />
+          <ArrowButton href={p.demo} label={`${t('viewDemo')}: ${p.title}`} decorative />
         </div>
       )}
     </article>

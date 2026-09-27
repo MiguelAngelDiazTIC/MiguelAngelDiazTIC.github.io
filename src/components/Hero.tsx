@@ -10,7 +10,7 @@ export function Hero() {
     <section id="inicio" className="hero container">
       <div className="hero-text">
         <p className="status">
-          <span className="status-dot" aria-hidden /> {t('openToWork')}
+          <span className="status-dot" aria-hidden /> {t('openToWork')} · {profile.location}
         </p>
         <h1>
           {t('hello')}{' '}

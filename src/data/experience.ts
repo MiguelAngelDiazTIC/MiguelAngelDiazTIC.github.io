@@ -2,43 +2,31 @@ import type { Experience } from '../types'
 
 export const experience: Experience[] = [
   {
-    role: { es: 'Desarrollador Front-End (prácticas)', en: 'Front-End Developer (internship)' },
-    company: 'Accenture · BBVA',
-    place: { es: 'Remoto · Madrid', en: 'Remote · Madrid' },
-    period: { es: 'Mar 2026 – Jun 2026', en: 'Mar 2026 – Jun 2026' },
-    bullets: {
-      es: [
-        'Interfaces y componentes para aplicaciones bancarias con JavaScript y TypeScript.',
-        'Criterios de calidad, accesibilidad, usabilidad y diseño responsive.',
-        'Trabajo con perfiles multidisciplinares en un flujo ágil y remoto.',
-      ],
-      en: [
-        'Interfaces and components for banking applications with JavaScript and TypeScript.',
-        'Quality, accessibility, usability and responsive design standards.',
-        'Worked with cross-functional teams in an agile, remote workflow.',
-      ],
-    },
-    kind: 'dev',
-  },
-  {
-    role: { es: 'Desarrollador Front-End (prácticas)', en: 'Front-End Developer (internship)' },
+    role: { es: 'Desarrollador front-end (prácticas)', en: 'Front-end developer (internship)' },
     company: 'Accenture · BBVA',
     place: { es: 'Madrid', en: 'Madrid' },
-    period: { es: 'May 2025', en: 'May 2025' },
+    period: { es: '2025 – 2026', en: '2025 – 2026' },
+    /** Dos etapas en la misma empresa: una sola tarjeta con ambas fechas */
+    stints: [
+      { period: { es: 'Mar – Jun 2026', en: 'Mar – Jun 2026' }, place: { es: 'Remoto · Madrid', en: 'Remote · Madrid' } },
+      { period: { es: 'May 2025', en: 'May 2025' }, place: { es: 'Madrid', en: 'Madrid' } },
+    ],
     bullets: {
       es: [
-        'Desarrollo y mantenimiento de componentes front-end para aplicaciones web bancarias.',
-        'Reuniones ágiles y revisiones de código orientadas a calidad y funcionalidad.',
+        'Interfaces y componentes front-end para aplicaciones bancarias con JavaScript y TypeScript.',
+        'Criterios de calidad, accesibilidad, usabilidad y diseño responsive.',
+        'Reuniones ágiles y revisiones de código en equipos multidisciplinares.',
       ],
       en: [
-        'Built and maintained front-end components for banking web applications.',
-        'Agile ceremonies and code reviews focused on quality and functionality.',
+        'Front-end interfaces and components for banking applications with JavaScript and TypeScript.',
+        'Quality, accessibility, usability and responsive design standards.',
+        'Agile ceremonies and code reviews in cross-functional teams.',
       ],
     },
     kind: 'dev',
   },
   {
-    role: { es: 'Técnico Informático', en: 'IT Technician' },
+    role: { es: 'Técnico informático', en: 'IT Technician' },
     company: 'AYM Esports',
     place: { es: 'Barcelona', en: 'Barcelona' },
     period: { es: 'Dic 2022 – May 2023', en: 'Dec 2022 – May 2023' },
@@ -55,7 +43,7 @@ export const experience: Experience[] = [
     kind: 'it',
   },
   {
-    role: { es: 'Técnico Informático', en: 'IT Technician' },
+    role: { es: 'Técnico informático', en: 'IT Technician' },
     company: 'Movistar Riders',
     place: { es: 'Madrid', en: 'Madrid' },
     period: { es: 'Ago 2022 – Nov 2022', en: 'Aug 2022 – Nov 2022' },
@@ -72,7 +60,7 @@ export const experience: Experience[] = [
     kind: 'it',
   },
   {
-    role: { es: 'Técnico de Soporte IT', en: 'IT Support Technician' },
+    role: { es: 'Técnico de soporte IT', en: 'IT Support Technician' },
     company: 'Five Media Clan',
     place: { es: 'España', en: 'Spain' },
     period: { es: 'Mar 2022 – Ago 2022', en: 'Mar 2022 – Aug 2022' },
@@ -83,7 +71,7 @@ export const experience: Experience[] = [
     kind: 'it',
   },
   {
-    role: { es: 'Técnico Informático (prácticas)', en: 'IT Technician (internship)' },
+    role: { es: 'Técnico informático (prácticas)', en: 'IT Technician (internship)' },
     company: 'El Mundo del Móvil',
     place: { es: 'Madrid', en: 'Madrid' },
     period: { es: 'Mar 2022 – Jun 2022', en: 'Mar 2022 – Jun 2022' },

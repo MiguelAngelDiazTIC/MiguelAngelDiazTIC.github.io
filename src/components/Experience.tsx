@@ -25,9 +25,22 @@ export function Experience() {
                 </h3>
                 <span className="exp-period">{l(e.period)}</span>
               </div>
-              <p className="exp-company">
-                {e.company} · {l(e.place)}
-              </p>
+              {e.stints ? (
+                <>
+                  <p className="exp-company">{e.company}</p>
+                  <ul className="exp-stints">
+                    {e.stints.map((s) => (
+                      <li key={s.period.es}>
+                        <span className="exp-period">{l(s.period)}</span> · {l(s.place)}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <p className="exp-company">
+                  {e.company} · {l(e.place)}
+                </p>
+              )}
               <ul className="exp-bullets">
                 {l(e.bullets).map((b) => (
                   <li key={b}>{b}</li>
