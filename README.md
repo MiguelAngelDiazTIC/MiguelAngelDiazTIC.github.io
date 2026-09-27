@@ -28,11 +28,15 @@ Solo hay que configurarlo una vez: **Settings → Pages → Build and deployment
 4. `featured: true` hace que la tarjeta ocupe dos columnas.
 5. Haz commit y push: la web se actualiza sola.
 
+## Añadir una prueba técnica
+
+Copia un objeto en `src/data/techTests.ts` y rellena el enunciado (`brief`), cómo la resolviste (`solution`, en puntos cortos), `tags`, `repo`/`demo` y `date`. `noAI: true` muestra la etiqueta "Sin IA".
+
 ## Otros datos
 
 | Qué | Dónde |
 |---|---|
-| Nombre, bio, redes, foto | `src/data/profile.ts` (foto en `public/`, p. ej. `photo: '/me.jpg'`) |
+| Nombre, bio, redes, foto, tarjeta de eSports | `src/data/profile.ts` (foto en `public/`, p. ej. `photo: '/me.jpg'`) |
 | Experiencia | `src/data/experience.ts` |
 | Formación | `src/data/education.ts` |
 | Competencias | `src/data/skills.ts` |

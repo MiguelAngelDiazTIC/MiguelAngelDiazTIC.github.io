@@ -1,7 +1,7 @@
 import { techTests } from '../data/techTests'
 import { useLang } from '../i18n/useLang'
 import type { TechTest } from '../types'
-import { GitHub } from './Icons'
+import { ArrowUpRight, GitHub } from './Icons'
 
 const sorted = [...techTests].sort((a, b) => b.date.localeCompare(a.date))
 
@@ -11,7 +11,6 @@ export function TechTests() {
   return (
     <section id="pruebas" className="container section">
       <header className="section-head">
-        <p className="eyebrow">{t('testsEyebrow')}</p>
         <h2>{t('testsTitle')}</h2>
         <p className="section-intro">{t('testsIntro')}</p>
       </header>
@@ -52,7 +51,7 @@ function TestCard({ test: x }: { test: TechTest }) {
       </div>
 
       <footer className="test-foot">
-        <ul className="chips">
+        <ul className="chips chips-quiet">
           {x.tags.map((tag) => (
             <li key={tag} className="chip">
               {tag}
@@ -62,7 +61,7 @@ function TestCard({ test: x }: { test: TechTest }) {
         <div className="test-links">
           {x.demo && (
             <a className="text-link" href={x.demo} target="_blank" rel="noreferrer">
-              {t('viewDemo')}
+              <ArrowUpRight size={16} /> {t('viewDemo')}
             </a>
           )}
           {x.repo && (

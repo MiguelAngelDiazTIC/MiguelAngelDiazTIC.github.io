@@ -2,22 +2,27 @@ import { education } from '../data/education'
 import { experience } from '../data/experience'
 import { useLang } from '../i18n/useLang'
 
+const dev = experience.filter((e) => e.kind === 'dev')
+const it = experience.filter((e) => e.kind === 'it')
+
 export function Experience() {
   const { t, l } = useLang()
 
   return (
     <section id="experiencia" className="container section">
       <header className="section-head">
-        <p className="eyebrow">{t('experienceEyebrow')}</p>
         <h2>{t('experienceTitle')}</h2>
       </header>
 
       <div className="exp-layout">
         <ol className="timeline">
-          {experience.map((e) => (
-            <li key={`${e.company}-${e.period.es}`} className={`card exp-item exp-${e.kind}`}>
+          {dev.map((e) => (
+            <li key={`${e.company}-${e.period.es}`} className="card exp-item">
               <div className="exp-head">
-                <h3>{l(e.role)}</h3>
+                <h3>
+                  {l(e.role)}
+                  <span className="visually-hidden"> · {e.company}</span>
+                </h3>
                 <span className="exp-period">{l(e.period)}</span>
               </div>
               <p className="exp-company">
@@ -30,6 +35,20 @@ export function Experience() {
               </ul>
             </li>
           ))}
+
+          {/* Etapa anterior al desarrollo: una línea por puesto */}
+          <li className="card exp-item exp-earlier">
+            <h3>{t('itEarlier')}</h3>
+            <ul className="earlier-list">
+              {it.map((e) => (
+                <li key={`${e.company}-${e.period.es}`}>
+                  <strong>{e.company}</strong>
+                  <span>{l(e.role)}</span>
+                  <span className="exp-period">{l(e.period)}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
         </ol>
 
         <aside className="card card-accent edu">

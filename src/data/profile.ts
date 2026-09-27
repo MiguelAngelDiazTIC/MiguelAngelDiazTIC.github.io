@@ -14,6 +14,15 @@ export const profile = {
     en: 'Looking for my first junior front-end developer role.',
   } as Localized,
   location: 'Madrid',
+  /** Tarjeta de eSports del bento: de dónde vengo */
+  esports: {
+    label: { es: 'Vengo de los eSports', en: 'eSports background' } as Localized,
+    teams: ['Movistar Riders', 'AYM Esports', 'Five Media Clan'],
+    text: {
+      es: 'Soporte IT en bootcamps, torneos y directos. Hoy sigo esa escena con Mercado Fichajes VLR.',
+      en: 'IT support at bootcamps, tournaments and live shows. Today I follow that scene with Mercado Fichajes VLR.',
+    } as Localized,
+  },
   email: 'miguelangeldiaztic@gmail.com',
   github: 'https://github.com/MiguelAngelDiazTIC',
   linkedin: 'https://www.linkedin.com/in/miguel-ángel-díaz-gutiérrez-634605411',

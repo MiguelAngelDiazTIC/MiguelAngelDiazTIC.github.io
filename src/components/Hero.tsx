@@ -48,7 +48,7 @@ export function Hero() {
           </>
         )}
         <div className="hero-notch">
-          <ArrowButton href="#proyectos" label={t('navProjects')} />
+          <ArrowButton href="#proyectos" label={t('seeProjects')} />
         </div>
       </div>
     </section>

@@ -18,6 +18,31 @@ export const ArrowUpRight = ({ size = 22 }: IconProps) => (
   </svg>
 )
 
+export const ArrowDown = ({ size = 22 }: IconProps) => (
+  <svg {...base(size)}>
+    <path d="M12 5v14M6 13l6 6 6-6" />
+  </svg>
+)
+
+export const ArrowUp = ({ size = 22 }: IconProps) => (
+  <svg {...base(size)}>
+    <path d="M12 19V5M6 11l6-6 6 6" />
+  </svg>
+)
+
+export const Copy = ({ size = 20 }: IconProps) => (
+  <svg {...base(size)}>
+    <rect x="9" y="9" width="12" height="12" rx="2" />
+    <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" />
+  </svg>
+)
+
+export const Check = ({ size = 20 }: IconProps) => (
+  <svg {...base(size)}>
+    <path d="m5 12 5 5 9-10" />
+  </svg>
+)
+
 export const Sun = ({ size = 18 }: IconProps) => (
   <svg {...base(size)}>
     <circle cx="12" cy="12" r="4" />
@@ -35,6 +60,13 @@ export const MapPin = ({ size = 20 }: IconProps) => (
   <svg {...base(size)}>
     <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
     <circle cx="12" cy="9.5" r="2.5" />
+  </svg>
+)
+
+export const Gamepad = ({ size = 20 }: IconProps) => (
+  <svg {...base(size)}>
+    <path d="M6 11h4M8 9v4M15 12h.01M18 10h.01" />
+    <path d="M17.3 5H6.7a4 4 0 0 0-4 3.6l-.7 6.2A3 3 0 0 0 5 18c1 0 1.9-.5 2.4-1.3L9 14.5h6l1.6 2.2c.5.8 1.4 1.3 2.4 1.3a3 3 0 0 0 3-3.2l-.7-6.2A4 4 0 0 0 17.3 5z" />
   </svg>
 )
 

@@ -3,7 +3,7 @@ import { projects } from '../data/projects'
 import { useLang } from '../i18n/useLang'
 import type { Project } from '../types'
 import { ArrowButton } from './ArrowButton'
-import { GitHub } from './Icons'
+import { ArrowUpRight, GitHub } from './Icons'
 
 const sorted = [...projects].sort((a, b) => b.date.localeCompare(a.date))
 
@@ -14,7 +14,6 @@ export function Projects() {
     <section id="proyectos" className="band">
       <div className="container">
         <header className="section-head section-head-invert">
-          <p className="eyebrow">{t('projectsEyebrow')}</p>
           <h2>{t('projectsTitle')}</h2>
         </header>
         <div className="projects-grid">
@@ -59,18 +58,25 @@ function ProjectCard({ project: p }: { project: Project }) {
       <div className="project-body">
         <h3>{p.title}</h3>
         <p>{l(p.description)}</p>
-        <ul className="chips">
+        <ul className="chips chips-quiet">
           {p.tags.map((tag) => (
             <li key={tag} className="chip">
               {tag}
             </li>
           ))}
         </ul>
-        {p.repo && (
-          <a className="text-link" href={p.repo} target="_blank" rel="noreferrer">
-            <GitHub size={16} /> {t('viewCode')}
-          </a>
-        )}
+        <div className="project-links">
+          {p.demo && (
+            <a className="text-link" href={p.demo} target="_blank" rel="noreferrer">
+              <ArrowUpRight size={16} /> {t('viewDemo')}
+            </a>
+          )}
+          {p.repo && (
+            <a className="text-link" href={p.repo} target="_blank" rel="noreferrer">
+              <GitHub size={16} /> {t('viewCode')}
+            </a>
+          )}
+        </div>
       </div>
       {p.demo && (
         <div className="project-notch">

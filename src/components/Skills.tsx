@@ -5,9 +5,8 @@ export function Skills() {
   const { t, l } = useLang()
 
   return (
-    <section className="container section" aria-labelledby="skills-title">
+    <section id="competencias" className="container section" aria-labelledby="skills-title">
       <header className="section-head">
-        <p className="eyebrow">{t('skillsEyebrow')}</p>
         <h2 id="skills-title">{t('skillsTitle')}</h2>
       </header>
       <div className="skills-grid">

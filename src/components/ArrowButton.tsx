@@ -1,4 +1,4 @@
-import { ArrowUpRight } from './Icons'
+import { ArrowDown, ArrowUpRight } from './Icons'
 
 type Props = {
   href: string
@@ -6,18 +6,18 @@ type Props = {
   className?: string
 }
 
-/** Botón circular con flecha ↗, el sello del estilo bento */
+/** Botón circular con flecha, el sello del estilo bento: ↗ sale a otra web, ↓ baja dentro de la página */
 export function ArrowButton({ href, label, className = '' }: Props) {
   const external = href.startsWith('http')
   return (
     <a
-      className={`arrow-btn ${className}`}
+      className={`arrow-btn ${external ? '' : 'arrow-btn-down'} ${className}`}
       href={href}
       aria-label={label}
       title={label}
       {...(external && { target: '_blank', rel: 'noreferrer' })}
     >
-      <ArrowUpRight />
+      {external ? <ArrowUpRight /> : <ArrowDown />}
     </a>
   )
 }
