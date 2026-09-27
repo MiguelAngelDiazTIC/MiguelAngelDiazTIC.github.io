@@ -70,30 +70,90 @@ function startArrival() {
     timers.set(el, window.setTimeout(() => delete el.dataset.arrived, 1600))
   }
 
+  let stopScroll = () => {}
+
   const onClick = (e: MouseEvent) => {
+    // Ctrl/Cmd/Mayús + clic o botón central: el navegador decide (nueva pestaña, etc.)
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
     const a = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]')
     const id = a?.getAttribute('href')?.slice(1)
     const el = id ? document.getElementById(id) : null
-    if (!el) return
+    if (!a || !el) return
 
-    // Ya estamos ahí: no habrá scroll, se señala al momento
-    const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0
-    if (Math.abs(el.getBoundingClientRect().top - pad) < 4) return arrive(el)
+    e.preventDefault()
+    stopScroll()
+    if (location.hash !== `#${id}`) history.pushState(null, '', `#${id}`)
 
-    let done = false
-    const finish = () => {
-      if (done) return
-      done = true
-      window.removeEventListener('scrollend', finish)
+    const land = () => {
+      // Lo que haría el enlace nativo: el foco sigue en la sección de destino (teclado y lectores)
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1')
+      el.focus({ preventScroll: true })
       arrive(el)
     }
-    window.addEventListener('scrollend', finish)
-    // Navegadores sin `scrollend`, o scroll interrumpido
-    window.setTimeout(finish, 'onscrollend' in window ? 1800 : 900)
+
+    const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0
+    const max = document.documentElement.scrollHeight - innerHeight
+    const to = Math.min(max, Math.max(0, el.getBoundingClientRect().top + scrollY - pad))
+    stopScroll = scrollToY(to, land)
   }
 
   document.addEventListener('click', onClick)
-  return () => document.removeEventListener('click', onClick)
+  return () => {
+    document.removeEventListener('click', onClick)
+    stopScroll()
+  }
+}
+
+/**
+ * Scroll propio en lugar de `scroll-behavior: smooth`, que depende del navegador (Chrome permite
+ * desactivarlo y entonces salta de golpe). Acelera y frena con suavidad; la duración crece con la
+ * distancia pero con techo. Si el usuario toca la rueda, el teclado o la pantalla, se detiene.
+ * Con movimiento reducido no hay recorrido: la página funde de una posición a la otra.
+ */
+function scrollToY(to: number, done: () => void) {
+  const from = scrollY
+  const distance = to - from
+  const jump = () => window.scrollTo({ top: to, behavior: 'instant' })
+
+  if (Math.abs(distance) < 2) {
+    done()
+    return () => {}
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if ('startViewTransition' in document) document.startViewTransition(jump).finished.then(done)
+    else {
+      jump()
+      done()
+    }
+    return () => {}
+  }
+
+  const duration = Math.min(1100, 380 + Math.abs(distance) * 0.28)
+  // ease-in-out cúbica: arranca sin tirón y se posa sin frenazo
+  const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2)
+  const start = performance.now()
+  let frame = 0
+
+  const step = (now: number) => {
+    const t = Math.min(1, (now - start) / duration)
+    window.scrollTo({ top: from + distance * ease(t), behavior: 'instant' })
+    if (t < 1) frame = requestAnimationFrame(step)
+    else {
+      cleanup()
+      done()
+    }
+  }
+
+  const interrupt = () => cleanup()
+  const events = ['wheel', 'touchstart', 'keydown', 'pointerdown'] as const
+  const cleanup = () => {
+    cancelAnimationFrame(frame)
+    events.forEach((ev) => window.removeEventListener(ev, interrupt))
+  }
+  events.forEach((ev) => window.addEventListener(ev, interrupt, { passive: true }))
+  frame = requestAnimationFrame(step)
+  return cleanup
 }
 
 function startCardLight() {
