@@ -9,7 +9,7 @@ export const projects: Project[] = [
       es: 'Tracker de fitness personal y mobile-first: registra tu peso con gráficas y organiza rutinas por semanas, días y series.',
       en: 'Personal, mobile-first fitness tracker: log your weight with charts and organise routines by weeks, days and sets.',
     },
-    image: '/projects/gym-app.webp',
+    screens: ['/projects/gym-app-peso.webp', '/projects/gym-app-rutinas.webp', '/projects/gym-app-nutricion.webp'],
     tags: ['React', 'TypeScript', 'Recharts', 'Motion'],
     demo: 'https://gym-app-eta-murex.vercel.app',
     repo: 'https://github.com/MiguelAngelDiazTIC/Gym-App',

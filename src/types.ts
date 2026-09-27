@@ -8,6 +8,8 @@ export type Project = {
   description: Localized
   /** Ruta dentro de /public, p. ej. "/projects/gym-app.webp". Si falta se muestra un fondo con el título. */
   image?: string
+  /** Capturas de móvil (390×844). Si hay, se muestran como teléfonos en vez de `image`. */
+  screens?: string[]
   tags: string[]
   demo?: string
   repo?: string

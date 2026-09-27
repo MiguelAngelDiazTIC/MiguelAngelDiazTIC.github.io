@@ -35,7 +35,15 @@ function ProjectCard({ project: p }: { project: Project }) {
   return (
     <article className={`card project-card${p.featured ? ' is-featured' : ''}`}>
       <div className="project-media">
-        {p.image && !imageFailed ? (
+        {p.screens?.length ? (
+          <div className="phones">
+            {p.screens.map((src) => (
+              <div key={src} className="phone">
+                <img src={src} alt="" loading="lazy" width={390} height={844} />
+              </div>
+            ))}
+          </div>
+        ) : p.image && !imageFailed ? (
           <img
             src={p.image}
             alt=""
