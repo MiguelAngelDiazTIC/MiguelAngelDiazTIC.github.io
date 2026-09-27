@@ -36,15 +36,17 @@ export function Hero() {
 
       <div className="hero-photo">
         {profile.photo ? (
-          <img src={profile.photo} alt={profile.fullName} width={400} height={500} />
+          <img src={profile.photo} alt={profile.fullName} width={800} height={948} />
         ) : (
-          <span className="hero-initials" aria-hidden>
-            MÁ
-          </span>
+          <>
+            <span className="hero-initials" aria-hidden>
+              MÁ
+            </span>
+            <span className="hero-vertical" aria-hidden>
+              {l(profile.role)}
+            </span>
+          </>
         )}
-        <span className="hero-vertical" aria-hidden>
-          {l(profile.role)}
-        </span>
         <div className="hero-notch">
           <ArrowButton href="#proyectos" label={t('navProjects')} />
         </div>

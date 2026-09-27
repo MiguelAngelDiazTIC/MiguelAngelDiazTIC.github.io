@@ -31,7 +31,7 @@ Solo hay que configurarlo una vez: **Settings → Pages → Build and deployment
 
 | Qué | Dónde |
 |---|---|
-| Nombre, bio, redes, foto | `src/data/profile.ts` (foto en `public/`, p. ej. `photo: '/me.webp'`) |
+| Nombre, bio, redes, foto | `src/data/profile.ts` (foto en `public/`, p. ej. `photo: '/me.jpg'`) |
 | Experiencia | `src/data/experience.ts` |
 | Formación | `src/data/education.ts` |
 | Competencias | `src/data/skills.ts` |

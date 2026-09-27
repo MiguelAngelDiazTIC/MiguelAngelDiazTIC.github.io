@@ -19,7 +19,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/miguel-ángel-díaz-gutiérrez-634605411',
   cv: '/cv/CV_Miguel_Angel_Diaz.pdf',
   /** Pon tu foto en /public y cambia esta ruta, p. ej. '/me.webp'. Sin foto se muestran las iniciales. */
-  photo: undefined as string | undefined,
+  photo: '/me.jpg' as string | undefined,
   languages: [
     { name: { es: 'Español', en: 'Spanish' }, level: { es: 'Nativo', en: 'Native' } },
     { name: { es: 'Inglés', en: 'English' }, level: { es: 'C1', en: 'C1' } },
