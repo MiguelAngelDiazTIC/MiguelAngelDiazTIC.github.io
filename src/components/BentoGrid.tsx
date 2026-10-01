@@ -23,7 +23,7 @@ export function BentoGrid() {
         <p>{l(profile.esports.text)}</p>
       </article>
 
-      <article className="card card-langs">
+      <article className="card">
         <h3 className="card-label">{t('languages')}</h3>
         <ul className="lang-list">
           {profile.languages.map((lg) => (

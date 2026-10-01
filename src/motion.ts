@@ -2,8 +2,7 @@
  * Movimiento de la página que no pertenece a un componente concreto:
  * - revelado al hacer scroll: cabeceras de sección, tarjetas y la banda de proyectos entran
  *   al cruzar el viewport; las que entran juntas lo hacen escalonadas;
- * - llegada: al pulsar un enlace interno, cuando termina el scroll la sección destino lo señala;
- * - luz de las tarjetas: un brillo suave sigue al puntero sobre cada tarjeta.
+ * - llegada: al pulsar un enlace interno, cuando termina el scroll la sección destino lo señala.
  * Sin JS no se oculta nada: el estado oculto solo existe con `reveal-on` en <html>.
  */
 
@@ -14,7 +13,7 @@ export function enableReveal() {
 }
 
 export function startMotion() {
-  const cleanups = [startReveal(), startArrival(), startCardLight()]
+  const cleanups = [startReveal(), startArrival()]
   return () => cleanups.forEach((fn) => fn())
 }
 
@@ -154,32 +153,4 @@ function scrollToY(to: number, done: () => void) {
   events.forEach((ev) => window.addEventListener(ev, interrupt, { passive: true }))
   frame = requestAnimationFrame(step)
   return cleanup
-}
-
-function startCardLight() {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return () => {}
-
-  let frame = 0
-  let last: PointerEvent | null = null
-
-  const paint = () => {
-    frame = 0
-    if (!last) return
-    const card = (last.target as Element).closest?.<HTMLElement>('.card')
-    if (!card) return
-    const r = card.getBoundingClientRect()
-    card.style.setProperty('--mx', `${last.clientX - r.left}px`)
-    card.style.setProperty('--my', `${last.clientY - r.top}px`)
-  }
-
-  const onMove = (e: PointerEvent) => {
-    last = e
-    if (!frame) frame = requestAnimationFrame(paint)
-  }
-
-  document.addEventListener('pointermove', onMove, { passive: true })
-  return () => {
-    document.removeEventListener('pointermove', onMove)
-    cancelAnimationFrame(frame)
-  }
 }

@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useLang } from '../i18n/useLang'
 import type { StringKey } from '../i18n/strings'
-import { Close, Menu, Moon, Sun } from './Icons'
+import { Close, LogoMark, Menu, Moon, Sun } from './Icons'
 import { withViewTransition } from '../viewTransition'
 
-// "Inicio" lo cubre el logo MD
+// "Inicio" lo cubre el logo
 const left: [string, StringKey][] = [
   ['#sobre-mi', 'navAbout'],
   ['#proyectos', 'navProjects'],
@@ -122,11 +122,11 @@ export function Navbar({ theme, onToggleTheme }: Props) {
     <header className="nav-wrap" ref={wrapRef}>
       <nav className="nav" aria-label={t('navLabel')} ref={navRef}>
         <span className="nav-pill" ref={pillRef} aria-hidden />
-        <ul className="nav-links nav-left">{left.map(link)}</ul>
+        <ul className="nav-links">{left.map(link)}</ul>
         <a href="#inicio" className="nav-logo" aria-label={`Miguel Ángel Díaz – ${t('navHome')}`}>
-          MD
+          <LogoMark />
         </a>
-        <ul className="nav-links nav-right">{right.map(link)}</ul>
+        <ul className="nav-links">{right.map(link)}</ul>
 
         <div className="nav-tools">
           <button

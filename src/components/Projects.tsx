@@ -16,7 +16,7 @@ export function Projects() {
   return (
     <section id="proyectos" className="band">
       <div className="container">
-        <header className="section-head section-head-invert">
+        <header className="section-head">
           <h2>{t('projectsTitle')}</h2>
         </header>
         <div className="projects-grid">

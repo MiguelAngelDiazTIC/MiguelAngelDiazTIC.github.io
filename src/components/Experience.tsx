@@ -17,7 +17,7 @@ export function Experience() {
       <div className="exp-layout">
         <ol className="timeline">
           {dev.map((e) => (
-            <li key={`${e.company}-${e.period.es}`} className="card exp-item">
+            <li key={`${e.company}-${e.period.es}`} className="card">
               <div className="exp-head">
                 <h3>
                   {l(e.role)}
@@ -50,7 +50,7 @@ export function Experience() {
           ))}
 
           {/* Etapa anterior al desarrollo: una línea por puesto */}
-          <li className="card exp-item exp-earlier">
+          <li className="card exp-earlier">
             <h3>{t('itEarlier')}</h3>
             <ul className="earlier-list">
               {it.map((e) => (

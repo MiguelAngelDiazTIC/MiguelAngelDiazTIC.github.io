@@ -1,66 +1,69 @@
 /* ---------- Tokens ---------- */
+/* Cuaderno de bocetos: papel crema, grafito cálido y lápiz rojo como único acento */
 :root {
-  --accent: #5b3fd9;
-  --accent-hover: #4c32c4;
-  --accent-ink: #ffffff;
-  --accent-soft: #ece8fd;
-  --accent-text: #4c32c4;
-  /* Morado para botones sobre fondos oscuros: 3,6:1 frente a la banda, 5:1 con icono blanco */
-  --accent-bright: #6d55ee;
-  /* Texto secundario sobre superficies moradas: lila sólido, 5,1:1 sobre --accent */
-  --on-accent-muted: #e4ddff;
+  --accent: #e8684a;
+  --accent-hover: #f07f64;
+  /* Blanco sobre el acento se queda en 3,2:1: encima va grafito (5,3:1) */
+  --accent-ink: #1f1b18;
+  --accent-soft: #fbe0d8;
+  /* El acento base como texto no llega a AA sobre el papel: versión oscura, 5,1:1 */
+  --accent-text: #b23a1a;
+  /* Texto secundario sobre superficies de acento: 5:1 sobre --accent */
+  --on-accent-muted: #3a1408;
 
-  --bg: #f3f2f7;
+  --bg: #f4ede0;
   --surface: #ffffff;
-  --surface-2: #f7f6fb;
-  --text: #16151c;
-  --muted: #5f5d72;
-  --border: rgb(22 21 28 / 0.08);
-  --band: #16151c;
-  --band-text: #f3f2f7;
-  --band-muted: #a9a7bb;
+  --surface-2: #fbf7ef;
+  --text: #1f1b18;
+  --muted: #57504a;
+  /* Trazo de lápiz: contorno de tarjetas y controles */
+  --ink: #1f1b18;
+  /* Sombra maciza y desplazada, como un segundo trazo */
+  --shadow-ink: #1f1b18;
+  --border: rgb(31 27 24 / 0.28);
+  --paper-dot: rgb(31 27 24 / 0.07);
+  /* Banda de proyectos: papel kraft, un tono por debajo del fondo */
+  --band: #eadfc9;
+  --band-text: #1f1b18;
   --card-on-band: #ffffff;
   --ok: #157a41;
-  --focus: #4c32c4;
+  --focus: #1f1b18;
 
-  --radius-lg: 32px;
-  --radius: 24px;
-  --radius-sm: 14px;
-  --shadow: 0 1px 2px rgb(22 21 28 / 0.04), 0 8px 24px rgb(22 21 28 / 0.06);
+  --radius-lg: 24px;
+  --radius: 18px;
 
-  --shadow-lift: 0 2px 4px rgb(22 21 28 / 0.05), 0 20px 44px rgb(22 21 28 / 0.14);
-  --glow: color-mix(in srgb, var(--accent) 11%, transparent);
   /* Deceleración exponencial: todo llega rápido y se posa */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --font: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Delicious Handrawn solo trae peso 400: sin negritas sintéticas (font-synthesis en body) */
+  --font-display: 'Delicious Handrawn', 'Segoe Print', 'Comic Sans MS', cursive;
+  --font: var(--font-display);
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
   --nav-h: 64px;
 
   color-scheme: light;
 }
 
+/* Oscuro: el mismo cuaderno en papel negro, carboncillo cálido sin tinte azul */
 :root[data-theme='dark'] {
-  --accent: #5b3fd9;
-  --accent-hover: #6a50e6;
-  --accent-soft: #231d3f;
-  --accent-text: #a897ff;
+  --accent-soft: #45231a;
+  --accent-text: #ff9d83;
 
-  --bg: #0d0c11;
-  --surface: #17161d;
-  --surface-2: #1e1d25;
-  --text: #f2f1f7;
-  --muted: #a3a1b6;
-  --border: rgb(255 255 255 / 0.08);
-  --band: #121118;
-  --band-text: #f2f1f7;
-  --band-muted: #a3a1b6;
-  /* En oscuro las tarjetas se elevan sobre la banda con un paso claro de luminosidad */
-  --card-on-band: #211f2a;
+  --bg: #1a1715;
+  --surface: #25211e;
+  --surface-2: #302b27;
+  --text: #f4ede0;
+  --muted: #b5aca0;
+  --ink: #f4ede0;
+  --shadow-ink: #000000;
+  --border: rgb(244 237 224 / 0.28);
+  --paper-dot: rgb(244 237 224 / 0.06);
+  /* La banda se hunde: un tono por debajo del fondo, con las tarjetas por encima */
+  --band: #110f0d;
+  --band-text: #f4ede0;
+  --card-on-band: #25211e;
   --ok: #3ddc84;
-  --focus: #b3a4ff;
-  --shadow: none;
-  --shadow-lift: 0 20px 44px rgb(0 0 0 / 0.5);
-  --glow: color-mix(in srgb, var(--accent-bright) 20%, transparent);
+  --focus: #f4ede0;
 
   color-scheme: dark;
 }
@@ -83,11 +86,16 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  /* Papel punteado de cuaderno */
+  background: var(--bg) radial-gradient(var(--paper-dot) 1.5px, transparent 1.5px) 0 0 / 24px 24px;
   color: var(--text);
   font-family: var(--font);
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  /* La letra manuscrita tiene poca altura de x: un paso más de cuerpo que una sans */
+  font-size: 1.25rem;
+  line-height: 1.45;
+  /* El espacio de esta fuente es estrecho: sin esto las palabras se pegan */
+  word-spacing: 0.12em;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
@@ -97,9 +105,10 @@ h2,
 h3,
 h4 {
   margin: 0;
+  font-family: var(--font-display);
   line-height: 1.1;
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  letter-spacing: 0;
+  font-weight: 400;
 }
 
 p {
@@ -134,22 +143,21 @@ button {
   cursor: pointer;
 }
 
-/* Anillo de dos tonos (hueco del color de fondo + anillo) para que se vea sobre
-   cualquier superficie. El outline sigue el border-radius de cada elemento. */
+/* Anillo de tinta separado del contorno del elemento, que ya es de tinta: el hueco
+   lo distingue. Sin box-shadow, para no borrar la sombra desplazada de botones y tarjetas. */
 :focus-visible {
   outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px var(--bg);
+  outline-offset: 3px;
 }
 
-/* Sobre superficies moradas el morado desaparece: anillo blanco */
+/* Sobre el acento la tinta crema del tema oscuro no llega a 3:1: siempre grafito (5,3:1) */
 .card-accent :focus-visible {
-  outline-color: #fff;
+  outline-color: var(--accent-ink);
 }
 
-/* Botón blanco sobre morado: hueco oscuro (18:1 con el botón) y anillo blanco (6,65:1 con el morado) */
-.card-accent .btn-light:focus-visible {
-  box-shadow: 0 0 0 2px #16151c;
+/* La tarjeta de GitHub va invertida: el anillo también */
+.card-github :focus-visible {
+  outline-color: var(--bg);
 }
 
 /* main y las secciones reciben el foco al navegar por anclas (src/motion.ts): sin anillo */
@@ -182,10 +190,10 @@ section:focus {
   left: 16px;
   z-index: 100;
   padding: 12px 20px;
+  border: 2px solid var(--ink);
   border-radius: 999px;
   background: var(--text);
   color: var(--bg);
-  font-weight: 600;
   transform: translateY(-160%);
   transition: transform 0.2s ease;
 }
@@ -208,41 +216,51 @@ section:focus {
 }
 
 .section-head h2 {
-  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-size: clamp(2.5rem, 5.5vw, 3.75rem);
 }
 
 .eyebrow {
   margin-bottom: 8px;
   color: var(--accent-text);
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 /* ---------- Buttons ---------- */
+/* Píldora con contorno de tinta y sombra maciza: al pulsar se hunde sobre su sombra */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 48px;
   padding: 0 24px;
-  border: 1.5px solid transparent;
+  border: 2px solid var(--ink);
   border-radius: 999px;
-  font-weight: 600;
+  box-shadow: 3px 3px 0 var(--shadow-ink);
   white-space: nowrap;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-ink);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--shadow-ink);
 }
 
+/* Botón de tinta: su sombra sería invisible en tinta, va en el color de acento */
 .btn-dark {
+  --shadow-ink: var(--accent);
   background: var(--text);
   color: var(--bg);
 }
@@ -257,18 +275,20 @@ section:focus {
 }
 
 .btn-light {
+  border-color: var(--accent-ink);
   background: #fff;
-  color: #16151c;
+  color: var(--accent-ink);
 }
 
+/* Sobre la tarjeta de acento: contorno y sombra siempre en tinta oscura */
 .btn-ghost {
-  border-color: var(--on-accent-muted);
-  color: #fff;
+  --shadow-ink: var(--accent-ink);
+  border-color: var(--accent-ink);
+  color: var(--accent-ink);
 }
 
 .btn-ghost:hover {
-  border-color: #fff;
-  background: rgb(255 255 255 / 0.1);
+  background: rgb(255 255 255 / 0.3);
 }
 
 .arrow-btn {
@@ -276,6 +296,7 @@ section:focus {
   place-items: center;
   width: 56px;
   height: 56px;
+  border: 2px solid var(--ink);
   border-radius: 50%;
   background: var(--text);
   color: var(--bg);
@@ -293,14 +314,18 @@ section:focus {
   transform: translateY(3px);
 }
 
-/* Demo de proyecto: la acción principal de la tarjeta, morada en los dos temas */
+/* Flechas de esquina (foto y demos): en color de acento en los dos temas. En tinta, la de la
+   foto se perdía sobre la chaqueta oscura */
+.hero-notch .arrow-btn,
 .project-notch .arrow-btn {
-  background: var(--accent-bright);
-  color: #fff;
+  border-color: var(--accent-ink);
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
+.hero-notch .arrow-btn:hover,
 .project-notch .arrow-btn:hover {
-  background: var(--accent);
+  background: var(--accent-hover);
 }
 
 .text-link {
@@ -308,56 +333,27 @@ section:focus {
   align-items: center;
   gap: 6px;
   color: var(--accent-text);
-  font-weight: 600;
 }
 
+/* Subrayado ondulado, como hecho a mano */
 .text-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: underline wavy;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 5px;
 }
 
-/* ---------- Notch: esquina recortada con el botón de flecha ---------- */
+/* ---------- Botón de flecha en la esquina ---------- */
+/* Sin esquina recortada: el recorte partiría el contorno y la sombra desplazada de la tarjeta */
 .hero-notch,
 .project-notch {
-  --r: 24px;
   position: absolute;
-  /* Desborda 1 px fuera de la tarjeta (que no recorta) para tapar su borde y el suavizado */
-  right: -1px;
-  bottom: -1px;
-  padding: 11px 1px 1px 11px;
-  background: var(--notch-bg);
-  border-top-left-radius: calc(var(--r) + 8px);
+  right: 16px;
+  bottom: 16px;
 }
 
-.hero-notch::before,
-.hero-notch::after,
-.project-notch::before,
-.project-notch::after {
-  content: '';
-  position: absolute;
-  width: var(--r);
-  height: var(--r);
-  background: radial-gradient(circle at 0 0, transparent calc(var(--r) - 0.5px), var(--notch-bg) var(--r));
-}
-
-/* Las piezas cóncavas se solapan 1 px con el notch: sin solape, el suavizado
-   de bordes deja asomar una línea de la foto entre ellas */
-.hero-notch::before,
-.project-notch::before {
-  right: 0;
-  bottom: calc(100% - 1px);
-}
-
-.hero-notch::after,
-.project-notch::after {
-  right: calc(100% - 1px);
-  bottom: 0;
-}
-
-/* La esquina que tapa el notch no necesita radio: así no hay curva suavizada debajo */
-.hero-photo,
-.project-card:has(.project-notch) {
-  border-bottom-right-radius: 0;
+.hero-notch .arrow-btn,
+.project-notch .arrow-btn {
+  box-shadow: 3px 3px 0 var(--shadow-ink);
 }
 
 /* ---------- Navbar ---------- */
@@ -385,13 +381,11 @@ section:focus {
   gap: 8px;
   height: var(--nav-h);
   padding: 0 8px 0 12px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--ink);
   border-radius: 999px;
-  /* Casi opaca: el contenido que pasa por debajo no compite con los enlaces */
-  background: color-mix(in srgb, var(--surface) 94%, transparent);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  /* Opaca, como una tira de papel pegada encima */
+  background: var(--surface);
+  box-shadow: 4px 4px 0 var(--shadow-ink);
 }
 
 .nav-links {
@@ -407,7 +401,7 @@ section:focus {
   padding: 8px 16px;
   border-radius: 999px;
   color: var(--muted);
-  font-weight: 500;
+  line-height: 1.2;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -432,6 +426,7 @@ section:focus {
   position: absolute;
   top: 0;
   left: 0;
+  border: 1.5px dashed var(--accent-text);
   border-radius: 999px;
   background: var(--accent-soft);
   opacity: 0;
@@ -453,8 +448,6 @@ section:focus {
   border-radius: 50%;
   background: var(--accent);
   color: var(--accent-ink);
-  font-weight: 800;
-  letter-spacing: -0.04em;
   position: relative;
   z-index: 1;
   transition: transform 0.35s var(--ease-out);
@@ -483,15 +476,11 @@ section:focus {
     position: absolute;
     inset: -5px;
     border-radius: 50%;
-    background: conic-gradient(var(--accent) calc(var(--scroll) * 1turn), var(--border) 0);
+    background: conic-gradient(var(--ink) calc(var(--scroll) * 1turn), var(--border) 0);
     -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
     mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
     animation: scroll-progress linear both;
     animation-timeline: scroll(root block);
-  }
-
-  :root[data-theme='dark'] .nav-logo::before {
-    background: conic-gradient(var(--accent-bright) calc(var(--scroll) * 1turn), var(--border) 0);
   }
 }
 
@@ -506,9 +495,10 @@ section:focus {
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 0;
+  border: 1.5px solid var(--ink);
   border-radius: 50%;
   background: var(--surface-2);
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 700;
   transition: background-color 0.2s ease, transform 0.15s ease;
@@ -547,10 +537,10 @@ section:focus {
   display: grid;
   gap: 4px;
   padding: 8px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--ink);
   border-radius: var(--radius);
   background: var(--surface);
-  box-shadow: var(--shadow);
+  box-shadow: 4px 4px 0 var(--shadow-ink);
 }
 
 .nav-mobile {
@@ -606,7 +596,6 @@ section:focus {
   align-items: center;
   gap: 48px;
   padding-block: 56px 32px;
-  --notch-bg: var(--bg);
 }
 
 .status {
@@ -615,12 +604,12 @@ section:focus {
   gap: 10px;
   margin-bottom: 24px;
   padding: 6px 14px 6px 10px;
-  border: 1px solid var(--border);
+  border: 1.5px dashed var(--ink);
   border-radius: 999px;
   background: var(--surface);
   color: var(--muted);
-  font-size: 0.9375rem;
-  font-weight: 500;
+  font-size: 1.0625rem;
+  line-height: 1.3;
 }
 
 .status-dot {
@@ -649,10 +638,8 @@ section:focus {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6.5vw, 4.75rem);
-  font-weight: 800;
+  font-size: clamp(2.75rem, 6.5vw, 4.5rem);
   line-height: 1.05;
-  letter-spacing: -0.035em;
 }
 
 .hero-name {
@@ -680,11 +667,6 @@ section:focus {
   animation: draw 0.9s 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* En oscuro el morado base apenas se ve sobre el fondo: versión luminosa */
-:root[data-theme='dark'] .scribble path {
-  stroke: var(--accent-bright);
-}
-
 @keyframes draw {
   to {
     stroke-dashoffset: 0;
@@ -695,7 +677,7 @@ section:focus {
   max-width: 54ch;
   margin-top: 24px;
   color: var(--muted);
-  font-size: 1.125rem;
+  font-size: 1.375rem;
 }
 
 .hero-actions {
@@ -710,15 +692,19 @@ section:focus {
   display: grid;
   place-items: center;
   aspect-ratio: 4 / 5;
+  /* Recorta la foto por dentro del contorno; la sombra propia no se recorta */
+  overflow: hidden;
+  border: 2px solid var(--ink);
   border-radius: var(--radius-lg);
   background:
     radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.22), transparent 55%),
     var(--accent);
+  box-shadow: 8px 8px 0 var(--shadow-ink);
   color: var(--accent-ink);
 }
 
-/* Entrada del hero: la foto se abre en círculo desde la esquina del notch.
-   fill-mode backwards: al terminar no queda clip-path, así el notch puede desbordar 1 px */
+/* Entrada del hero: la foto se abre en círculo desde la esquina de la flecha.
+   fill-mode backwards: al terminar no queda clip-path, así la sombra desplazada no se recorta */
 .hero-photo {
   animation: photo-open 0.7s 0.15s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
@@ -751,14 +737,10 @@ section:focus {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  /* Hereda las esquinas de la tarjeta (sin la del notch) */
-  border-radius: inherit;
 }
 
 .hero-initials {
   font-size: clamp(5rem, 14vw, 9rem);
-  font-weight: 800;
-  letter-spacing: -0.06em;
   opacity: 0.95;
 }
 
@@ -768,6 +750,7 @@ section:focus {
   left: 20px;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -786,14 +769,16 @@ section:focus {
 .card {
   position: relative;
   padding: 28px;
-  border: 1px solid var(--border);
+  /* Contorno discontinuo a lápiz y sombra maciza desplazada */
+  border: 2px dashed var(--ink);
   border-radius: var(--radius);
   background: var(--surface);
-  box-shadow: var(--shadow);
+  box-shadow: 5px 5px 0 var(--shadow-ink);
 }
 
+/* Las tarjetas rellenas llevan el trazo continuo */
 .card-accent {
-  border-color: transparent;
+  border-style: solid;
   background: var(--accent);
   color: var(--accent-ink);
 }
@@ -801,9 +786,11 @@ section:focus {
 .card-label {
   margin-bottom: 12px;
   color: var(--muted);
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -812,13 +799,11 @@ section:focus {
 }
 
 .card-big {
-  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.625rem, 2.6vw, 2rem);
+  line-height: 1.15;
 }
 
-/* eSports: la tarjeta morada del bento, el rasgo que diferencia el perfil */
+/* eSports: la tarjeta de acento del bento, el rasgo que diferencia el perfil */
 .card-esports {
   grid-column: span 2;
   display: flex;
@@ -834,10 +819,8 @@ section:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 20px;
-  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+  line-height: 1.2;
 }
 
 .card-esports p {
@@ -855,7 +838,7 @@ section:focus {
   justify-content: space-between;
   gap: 8px;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1.5px dashed var(--border);
 }
 
 .lang-list li:last-child {
@@ -873,7 +856,9 @@ section:focus {
   justify-content: space-between;
   gap: 24px;
   min-height: 180px;
-  border-color: transparent;
+  /* Tarjeta de tinta: su sombra en tinta no se vería, va en el color de acento */
+  --shadow-ink: var(--accent);
+  border-style: solid;
   background: var(--text);
   color: var(--bg);
 }
@@ -888,6 +873,7 @@ section:focus {
   position: absolute;
   right: 20px;
   bottom: 20px;
+  border-color: var(--bg);
   background: var(--bg);
   color: var(--text);
 }
@@ -900,26 +886,27 @@ section:focus {
 
 /* Etiquetas de proyectos y pruebas: más discretas que las de competencias */
 .chips-quiet .chip {
-  padding: 4px 12px;
-  border: 1px solid var(--border);
+  padding: 3px 12px;
+  border: 1.5px dashed var(--border);
   background: transparent;
   color: var(--muted);
-  font-weight: 500;
 }
 
 .chip {
-  padding: 6px 14px;
+  padding: 4px 14px;
+  border: 1.5px solid var(--accent-text);
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent-text);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.3;
 }
 
 /* ---------- Projects ---------- */
 .band {
   --band-r: var(--radius-lg);
   padding-block: 72px;
+  border: 2px solid var(--ink);
   background: var(--band);
   color: var(--band-text);
   border-radius: var(--band-r);
@@ -933,11 +920,11 @@ section:focus {
 }
 
 .project-card {
-  --notch-bg: var(--band);
   display: flex;
   flex-direction: column;
   padding: 0;
-  border-color: rgb(255 255 255 / 0.08);
+  /* Recorta la captura por dentro del contorno */
+  overflow: hidden;
   background: var(--card-on-band);
   color: var(--text);
 }
@@ -952,9 +939,7 @@ section:focus {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   /* Separa capturas de fondo blanco del cuerpo blanco de la tarjeta */
-  border-bottom: 1px solid var(--border);
-  /* La tarjeta ya no recorta (para que el notch desborde): la imagen lleva sus propias esquinas */
-  border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
+  border-bottom: 2px dashed var(--ink);
   background:
     radial-gradient(circle at 20% 20%, rgb(255 255 255 / 0.2), transparent 55%),
     var(--accent);
@@ -1017,9 +1002,8 @@ section:focus {
 .project-fallback {
   padding: 24px;
   color: var(--accent-ink);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1.1;
   text-align: center;
 }
 
@@ -1032,7 +1016,7 @@ section:focus {
 }
 
 .project-body h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .project-body > p {
@@ -1052,7 +1036,7 @@ section:focus {
   max-width: 60ch;
   margin-top: 12px;
   color: var(--muted);
-  font-size: 1.125rem;
+  font-size: 1.375rem;
 }
 
 .tests-grid {
@@ -1068,7 +1052,7 @@ section:focus {
 }
 
 .test-card h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .test-meta {
@@ -1079,21 +1063,23 @@ section:focus {
 
 .pill {
   padding: 4px 12px;
-  border: 1px solid var(--border);
+  border: 1.5px dashed var(--border);
   border-radius: 999px;
   color: var(--muted);
-  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   font-weight: 600;
+  line-height: 1.5;
 }
 
 .pill-accent {
-  border-color: transparent;
+  border: 1.5px solid var(--ink);
   background: var(--accent);
   color: var(--accent-ink);
 }
 
 .pill-ok {
-  border-color: color-mix(in srgb, var(--ok) 40%, transparent);
+  border-color: var(--ok);
   color: var(--ok);
 }
 
@@ -1102,7 +1088,7 @@ section:focus {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding-block: 20px;
-  border-block: 1px solid var(--border);
+  border-block: 1.5px dashed var(--border);
 }
 
 .test-cols p {
@@ -1155,7 +1141,7 @@ section:focus {
 
 /* Soporte IT: un bloque compacto, una línea por puesto */
 .exp-earlier h3 {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
 }
 
 .earlier-list {
@@ -1169,7 +1155,7 @@ section:focus {
   align-items: baseline;
   gap: 4px 16px;
   padding-block: 10px;
-  border-top: 1px solid var(--border);
+  border-top: 1.5px dashed var(--border);
 }
 
 .earlier-list li span:not(.exp-period) {
@@ -1185,19 +1171,19 @@ section:focus {
 }
 
 .exp-head h3 {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
 }
 
 .exp-period {
   color: var(--muted);
-  font-size: 0.9375rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
   font-variant-numeric: tabular-nums;
 }
 
 .exp-company {
   margin-top: 4px;
   color: var(--accent-text);
-  font-weight: 600;
 }
 
 .exp-bullets {
@@ -1240,8 +1226,8 @@ section:focus {
 }
 
 .edu strong {
-  font-size: 1.125rem;
-  line-height: 1.3;
+  font-size: 1.5rem;
+  line-height: 1.2;
 }
 
 .edu .exp-period {
@@ -1269,13 +1255,13 @@ section:focus {
 .contact h2 {
   max-width: 20ch;
   margin-inline: auto;
-  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
 }
 
 .contact > p:not(.eyebrow) {
   margin-top: 16px;
   color: var(--on-accent-muted);
-  font-size: 1.125rem;
+  font-size: 1.375rem;
 }
 
 .contact-links {
@@ -1295,9 +1281,10 @@ section:focus {
   width: 48px;
   padding: 0;
   justify-content: center;
-  border-color: var(--on-accent-muted);
+  --shadow-ink: var(--accent-ink);
+  border-color: var(--accent-ink);
   background: transparent;
-  color: #fff;
+  color: var(--accent-ink);
 }
 
 /* El icono cambia de Copiar a ✓: cada icono nuevo entra con un pequeño pop */
@@ -1313,13 +1300,12 @@ section:focus {
 }
 
 .btn-copy:hover {
-  background: rgb(255 255 255 / 0.1);
+  background: rgb(255 255 255 / 0.3);
 }
 
 .copy-status {
   margin-top: 12px;
-  color: #fff;
-  font-weight: 600;
+  color: var(--accent-ink);
 }
 
 /* Vacío no reserva hueco; sigue en el DOM para que el aviso se anuncie */
@@ -1336,7 +1322,7 @@ section:focus {
   gap: 8px;
   padding-block: 24px 40px;
   color: var(--muted);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
 }
 
 .footer-links {
@@ -1458,43 +1444,11 @@ section:focus {
 .project-card:hover,
 .test-card:hover,
 .card-github:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lift);
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--shadow-ink);
 }
 
-/* Las esquinas recortadas quedan por encima de la luz de la tarjeta */
-.hero-notch,
-.project-notch {
-  z-index: 1;
-}
-
-/* Luz que sigue al puntero (coordenadas en src/motion.ts) */
-@media (hover: hover) and (pointer: fine) {
-  .card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--glow), transparent 70%);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-  }
-
-  .card:hover::after {
-    opacity: 1;
-  }
-
-  .card-accent {
-    --glow: rgb(255 255 255 / 0.16);
-  }
-
-  .card-github {
-    --glow: color-mix(in srgb, var(--accent-bright) 45%, transparent);
-  }
-}
-
-/* Llegada: tras navegar a una sección, un trazo morado subraya su título y se retira */
+/* Llegada: tras navegar a una sección, un trazo de acento subraya su título y se retira */
 .section-head h2,
 .contact h2 {
   position: relative;
@@ -1512,14 +1466,14 @@ section:focus {
   animation: arrive-bar 1.4s var(--ease-out) both;
 }
 
-:root[data-theme='dark'] [data-arrived] .section-head h2::after,
+/* Sobre la banda y la tarjeta de acento el trazo de acento apenas se ve: va en tinta */
 .band[data-arrived] .section-head h2::after {
-  background: var(--accent-bright);
+  background: var(--ink);
 }
 
 [data-arrived] .contact h2::after {
   left: calc(50% - 36px);
-  background: #fff;
+  background: var(--accent-ink);
 }
 
 @keyframes arrive-bar {
@@ -1615,7 +1569,7 @@ section:focus {
 
 @media (max-width: 640px) {
   body {
-    font-size: 1rem;
+    font-size: 1.1875rem;
   }
 
   .section {

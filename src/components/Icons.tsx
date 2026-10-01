@@ -12,6 +12,13 @@ const base = (size: number) => ({
   'aria-hidden': true,
 })
 
+/** La M del favicon (public/favicon.svg): mismo trazo, encuadrado al círculo del logo */
+export const LogoMark = ({ size = 48 }: IconProps) => (
+  <svg {...base(size)} viewBox="1.5 1.5 26 26" strokeWidth={2.6}>
+    <path d="M8.6 20.4 9.8 9.4l4.8 7.2 4.5-7.4 1.4 11.1" />
+  </svg>
+)
+
 export const ArrowUpRight = ({ size = 22 }: IconProps) => (
   <svg {...base(size)}>
     <path d="M7 17 17 7M8 7h9v9" />
@@ -53,13 +60,6 @@ export const Sun = ({ size = 18 }: IconProps) => (
 export const Moon = ({ size = 18 }: IconProps) => (
   <svg {...base(size)}>
     <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-  </svg>
-)
-
-export const MapPin = ({ size = 20 }: IconProps) => (
-  <svg {...base(size)}>
-    <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
-    <circle cx="12" cy="9.5" r="2.5" />
   </svg>
 )
 
