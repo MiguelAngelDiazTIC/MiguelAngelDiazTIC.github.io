@@ -5,17 +5,17 @@ export const profile = {
   fullName: 'Miguel Ángel Díaz Gutiérrez',
   role: { es: 'Desarrollador front-end', en: 'Front-end developer' } as Localized,
   bio: {
-    es: 'Construyo interfaces responsive y accesibles con JavaScript y TypeScript. He trabajado en Accenture desarrollando componentes para aplicaciones de BBVA, y antes di soporte IT en equipos de eSports de alto rendimiento.',
-    en: 'I build responsive, accessible interfaces with JavaScript and TypeScript. I worked at Accenture building components for BBVA applications, and before that I did IT support for high-performance eSports teams.',
+    es: 'Construyo interfaces responsive y accesibles con JavaScript y TypeScript. He trabajado en Accenture desarrollando componentes para aplicaciones de BBVA, y antes fui jugador profesional de eSports.',
+    en: 'I build responsive, accessible interfaces with JavaScript and TypeScript. I worked at Accenture building components for BBVA applications, and before that I was a professional eSports player.',
   } as Localized,
   location: 'Madrid',
   /** Tarjeta de eSports del bento: de dónde vengo */
   esports: {
     label: { es: 'Vengo de los eSports', en: 'eSports background' } as Localized,
-    teams: ['Movistar Riders', 'AYM Esports', 'Five Media Clan'],
+    teams: ['Movistar Riders', 'AYM Esports', 'Five Media Clan', 'Falke Esports'],
     text: {
-      es: 'Soporte IT en bootcamps, torneos y directos. Hoy sigo esa escena con Mercado Fichajes VLR.',
-      en: 'IT support at bootcamps, tournaments and live shows. Today I follow that scene with Mercado Fichajes VLR.',
+      es: 'Competí como jugador profesional. Hoy sigo esa escena con Mercado Fichajes VLR.',
+      en: 'I competed as a professional player. Today I follow that scene with Mercado Fichajes VLR.',
     } as Localized,
   },
   email: 'miguelangeldiaztic@gmail.com',
