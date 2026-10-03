@@ -27,7 +27,6 @@ export const strings = {
   testSolution: { es: 'Cómo lo resolví', en: 'How I solved it' },
   noAI: { es: 'Sin IA', en: 'No AI' },
   experienceTitle: { es: 'Experiencia y formación', en: 'Experience & education' },
-  itEarlier: { es: 'Antes del código: soporte IT', en: 'Before code: IT support' },
   education: { es: 'Formación', en: 'Education' },
   skillsTitle: { es: 'Con qué trabajo', en: 'What I work with' },
   contactEyebrow: { es: 'Hablemos', en: "Let's talk" },

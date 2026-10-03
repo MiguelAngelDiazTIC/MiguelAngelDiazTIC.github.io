@@ -3,7 +3,6 @@ import { experience } from '../data/experience'
 import { useLang } from '../i18n/useLang'
 
 const dev = experience.filter((e) => e.kind === 'dev')
-const it = experience.filter((e) => e.kind === 'it')
 
 export function Experience() {
   const { t, l } = useLang()
@@ -48,20 +47,6 @@ export function Experience() {
               </ul>
             </li>
           ))}
-
-          {/* Etapa anterior al desarrollo: una línea por puesto */}
-          <li className="card exp-earlier">
-            <h3>{t('itEarlier')}</h3>
-            <ul className="earlier-list">
-              {it.map((e) => (
-                <li key={`${e.company}-${e.period.es}`}>
-                  <strong>{e.company}</strong>
-                  <span>{l(e.role)}</span>
-                  <span className="exp-period">{l(e.period)}</span>
-                </li>
-              ))}
-            </ul>
-          </li>
         </ol>
 
         <aside className="card card-accent edu">

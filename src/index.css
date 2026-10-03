@@ -1139,29 +1139,6 @@ section:focus {
   color: var(--muted);
 }
 
-/* Soporte IT: un bloque compacto, una línea por puesto */
-.exp-earlier h3 {
-  font-size: 1.75rem;
-}
-
-.earlier-list {
-  display: grid;
-  margin-top: 12px;
-}
-
-.earlier-list li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
-  align-items: baseline;
-  gap: 4px 16px;
-  padding-block: 10px;
-  border-top: 1.5px dashed var(--border);
-}
-
-.earlier-list li span:not(.exp-period) {
-  color: var(--muted);
-}
-
 .exp-head {
   display: flex;
   flex-wrap: wrap;
@@ -1599,15 +1576,6 @@ section:focus {
 
   .card:not(.project-card) {
     padding: 22px;
-  }
-
-  .earlier-list li {
-    grid-template-columns: 1fr auto;
-  }
-
-  .earlier-list li span:not(.exp-period) {
-    grid-column: 1 / -1;
-    grid-row: 2;
   }
 
   .project-body {
