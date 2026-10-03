@@ -5,10 +5,22 @@ import type { Project } from '../types'
 import { ArrowButton } from './ArrowButton'
 import { ArrowUpRight, GitHub } from './Icons'
 
-// Destacados primero; después, del más nuevo al más antiguo
-const sorted = [...projects].sort(
-  (a, b) => Number(!!b.featured) - Number(!!a.featured) || b.date.localeCompare(a.date),
-)
+// Destacados primero; el resto, en el orden de src/data/projects.ts
+const sorted = [...projects].sort((a, b) => Number(!!b.featured) - Number(!!a.featured))
+
+// Columnas que ocupa la última tarjeta para cerrar su fila en la rejilla de 3 columnas
+// (0 si la fila ya queda completa): así no se queda sola con huecos al lado
+const COLS = 3
+const lastSpan = (() => {
+  let col = 0
+  for (const p of sorted) {
+    const span = p.featured ? 2 : 1
+    if (col + span > COLS) col = 0
+    col += span
+  }
+  const own = sorted.at(-1)?.featured ? 2 : 1
+  return col < COLS ? own + COLS - col : 0
+})()
 
 export function Projects() {
   const { t } = useLang()
@@ -20,8 +32,8 @@ export function Projects() {
           <h2>{t('projectsTitle')}</h2>
         </header>
         <div className="projects-grid">
-          {sorted.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
+          {sorted.map((p, i) => (
+            <ProjectCard key={p.slug} project={p} rowFill={i === sorted.length - 1 ? lastSpan : 0} />
           ))}
         </div>
       </div>
@@ -29,13 +41,15 @@ export function Projects() {
   )
 }
 
-function ProjectCard({ project: p }: { project: Project }) {
+function ProjectCard({ project: p, rowFill }: { project: Project; rowFill: number }) {
   const { t, l } = useLang()
   // Si la captura aún no está en /public se muestra el título en su lugar
   const [imageFailed, setImageFailed] = useState(false)
 
   return (
-    <article className={`card project-card${p.featured ? ' is-featured' : ''}`}>
+    <article
+      className={`card project-card${p.featured ? ' is-featured' : ''}${rowFill ? ` row-fill-${rowFill}` : ''}`}
+    >
       <div className="project-media">
         {p.screens?.length ? (
           <div className="phones">

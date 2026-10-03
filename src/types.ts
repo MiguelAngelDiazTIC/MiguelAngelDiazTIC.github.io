@@ -13,10 +13,8 @@ export type Project = {
   tags: string[]
   demo?: string
   repo?: string
-  /** Ocupa dos columnas en el grid */
+  /** Ocupa dos columnas en el grid y va por delante */
   featured?: boolean
-  /** "AAAA-MM", se ordena de más nuevo a más antiguo */
-  date: string
 }
 
 export type TechTest = {

@@ -11,6 +11,6 @@ export const skills: SkillGroup[] = [
   },
   {
     name: { es: 'Además', en: 'Also' },
-    items: ['Java', 'POO / OOP', 'SQL / MySQL', 'Linux', 'Redes / Networking'],
+    items: ['Tauri', 'Rust', 'Java', 'POO / OOP', 'SQL / MySQL', 'SQLite', 'Linux', 'Redes / Networking'],
   },
 ]

@@ -933,6 +933,26 @@ section:focus {
   grid-column: span 2;
 }
 
+/* La última tarjeta se estira para cerrar su fila (clases desde Projects.tsx).
+   Solo con 3 columnas: con 2 o 1 la rejilla ya cuadra sola */
+@media (min-width: 961px) {
+  .project-card.row-fill-2 {
+    grid-column: span 2;
+  }
+
+  /* A lo ancho de la rejilla: captura a la izquierda, texto a la derecha */
+  .project-card.row-fill-3 {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .row-fill-3 .project-media {
+    flex: 0 0 50%;
+    border-right: 2px dashed var(--ink);
+    border-bottom: 0;
+  }
+}
+
 .project-media {
   display: grid;
   place-items: center;
